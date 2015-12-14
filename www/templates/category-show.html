@@ -1,0 +1,45 @@
+<ion-view view-title="소녀 : 소분하는 여자들">
+
+    <ion-content has-header="true" has-tabs="true" padding="true">
+
+        <div id="productDiv" class="list">
+
+            <div class="item"><img ng-src="{{category.imgURI}}"></div>
+
+            <div class="item item-divider" id="productName" ng-bind="category.name"></div>
+            <div class="item item-text-wrap" ng-bind="category.description"></div>
+            <div class="item" ng-bind="category.check"></div>
+            <div class="item" ng-bind="category.brand"></div>
+
+        </div>
+        <!--del이랑 edit 버튼이 안뜨길래 지웠다-->
+        <!--
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-energized" ng-click="edit(category)">
+          Edit
+        </ion-option-button>
+        <ion-option-button class="button-assertive" ng-click="remove(category)">
+          Delete
+        </ion-option-button> -->
+
+
+        <div id="buyDiv" class="list">
+
+            <div class="item item-divider">구매하기</div>
+            <div class="item item-input item-stacked-label">
+                <label>
+                    <span class="input-label">옵션 선택</span>
+                    <!--옵션 선택 창 만들었다. 요거 어떻게 입력시키지ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ------------------>
+                    <input type="text" placeholder="옵션을 입력해주세요." ng-model="buy.opt">
+                </label>
+
+            </div>
+
+
+            <div class="item">
+                <button class="button button-block button-positive" ng-click="buy()">공동구매 신청</button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

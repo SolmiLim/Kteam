@@ -1,0 +1,160 @@
+<ion-view view-title="판매글 작성">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-dark ion-checkmark" ng-click="saveCategory()">
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" has-header="true" has-tabs="true" padding="true">
+
+        <!--
+        <form id="fileupload" name="fileupload" enctype="multipart/form-data" method="post">
+            <fieldset>
+                <input type="file" name="fileselect" id="fileselect"></input>
+                <input id="uploadbutton" type="button" value="이미지 업로드" ng-click="picture()" />
+                <input id="A" value="" />
+            </fieldset>
+        </form>  -->
+
+        <img ng-show="category.imgURI !== undefined" ng-src="{{category.imgURI}}">
+        <img ng-show="category.imgURI === undefined" ng-src="http://placehold.it/300x300">
+        <button ng-click="uploadPhoto()">
+            <a class="button button-icon icon ion-images" style="padding:0"></a>
+        </button>
+
+        <div class="list">
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Name</span>
+                <input type="text" placeholder="Work" ng-model="category.name">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Description</span>
+                <input type="text" placeholder="" ng-model="category.description">
+            </label>
+            <span>
+                
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">가격
+                    <input type="number" placeholder="가격" ng-model="category.price" ></span>
+            </label>
+
+            </span>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">예금주</span>
+                <input type="text" placeholder="예금주" ng-model="category.seller">
+            </label>
+
+            <label class="item item-input item-select">
+                <div class="input-label">은행명</div>
+                <select ng-model="category.bank" ng-change="changeCount(bank)">
+                    <option>신한은행</option>
+                    <option>제주은행</option>
+                    <option>국민은행</option>
+                    <option>농협은행</option>
+                    <option>우리은행</option>
+                    <option>하나은행</option>
+                    <option>외환은행</option>
+                    <option>우체국은행</option>
+                    <option>기업은행</option>
+                    <option>SC은행</option>
+                    <option>비엔파파리바은행</option>
+                    <option>씨티은행</option>
+                    <option>수협은행</option>
+                    <option>산업은행</option>
+                    <option>도이치</option>
+                    <option>상호저축은행</option>
+                    <option>신용협동조합</option>
+                    <option>지역농.축협</option>
+                    <option>새마을금고</option>
+                    <option>경남은행</option>
+                    <option>전북</option>
+                    <option>광주</option>
+                    <option>부산</option>
+                    <option>대구</option>
+                    <option>HSBC</option>
+                    <option>JP모간</option>
+                    <option>BOA</option>
+                    <option>신림조합</option>
+                    <option>공상은행</option>
+                    <option>신한금융투자</option>
+                    <option>유안타증권</option>
+                    <option>현대증권</option>
+                    <option>미래에셋증권</option>
+                    <option>대우증권</option>
+                    <option>삼성증권</option>
+                    <option>한국투자증권</option>
+                    <option>NH투자증권</option>
+                    <option>교보증권</option>
+                    <option>하이투자증권</option>
+                    <option>에이치엠씨투자증권</option>
+                </select>
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">계좌번호 </span>
+                <input type="number" placeholder="계좌번호" ng-model="category.account">
+            </label>
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    분할 선택
+                </div>
+                <select ng-model="category.check" ng-change="changeCount(check)">
+                    <option>2분할</option>
+                    <option>3분할</option>
+                    <option>4분할</option>
+                    <option>6분할</option>
+                </select>
+                <!--      <ion-checkbox ng-repeat="uploadItem in devList" ng-model="category.checked" ng-checked="category.checked">
+                        {{ uploadItem.checkedText }}
+                    </ion-checkbox> -->
+            </label>
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    브랜드
+                </div>
+                <select ng-model="category.brand" ng-change="changeCount(brand)">
+                    <option>네이처리퍼블릭</option>
+                    <option>더바디샵</option>
+                    <option>토니모리</option>
+                    <option>보브화장품</option>
+                    <option>에스케이투</option>
+                    <option>크리니크</option>
+                    <option>헤라</option>
+                    <option>오휘</option>
+                    <option>바비브라운 </option>
+                    <option>키엘</option>
+                    <option>비오템</option>
+                    <option>홀리카홀리카</option>
+                    <option>클리오</option>
+                    <option>베네피트 </option>
+                    <option>슈에무라</option>
+                    <option>에뛰드 하우스</option>
+                    <option>아리따움</option>
+                    <option>마몽드</option>
+                    <option>이니스프리</option>
+                    <option>아멜리</option>
+                </select>
+            </label>
+            
+             <label class="item item-input item-select">
+                <div class="input-label">진행 상황</div>
+                <select ng-model="category.state" ng-change="changeCount(state)">
+                    <option>진행</option>
+                    <option>마감</option>
+                 </select>
+            </label>
+        </div>
+        
+
+        <div style="visibility:hidden">
+            <input type="text" ng-model="category.usr">
+        </div>
+        <div style="visibility:hidden">
+            <input type="text" ng-model="category.flag">
+        </div>
+
+
+    </ion-content>
+
+</ion-view>
